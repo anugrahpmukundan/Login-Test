@@ -2,6 +2,8 @@ package com.anugrah.logintest.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anugrah.logintest.R
@@ -24,5 +26,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         observeViewModel()
+    }
+
+    fun observeViewModel(){
+        viewModel.networks.observe(this, Observer { networks ->
+            ipList.visibility = View.VISIBLE
+            networks?.let { networksAdapter.updateCountries(it) }
+        })
+
+        viewModel.networksLoadError.observe(this, Observer { isError ->
+            isError?.let{list_error.visibility = if(it) View.VISIBLE else View.GONE }
+        })
+
+        viewModel.loading.observe(this, Observer { isLoading ->
+            isLoading?.let {
+                loading_view.visibility = if (it) View.VISIBLE else View.GONE
+                if(it){
+                    list_error.visibility = View.GONE
+                    ipList.visibility = View.GONE
+                }
+            }
+        })
     }
 }
