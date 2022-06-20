@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.anugrah.logintest.R
 import com.anugrah.logintest.model.Networks
+import kotlinx.android.synthetic.main.item_ip.view.*
 
 class NetworksListAdapter(var networks: ArrayList<Networks>) : RecyclerView.Adapter<NetworksListAdapter.NetworkViewHolder>() {
 
@@ -29,11 +30,11 @@ class NetworksListAdapter(var networks: ArrayList<Networks>) : RecyclerView.Adap
 
         private val NwName = view.name
         private val NwIp = view.ip
-        private val progressDrawable = getProgressDrawable(view.context)
+        //private val progressDrawable = getProgressDrawable(view.context)
 
         fun bind(networks: Networks){
-            nwName.text = networks.nwName
-            nwIP.text = networks.nwIP
+            NwName.text = networks.nwName
+            NwIp.text = networks.nwIP
         }
     }
 }

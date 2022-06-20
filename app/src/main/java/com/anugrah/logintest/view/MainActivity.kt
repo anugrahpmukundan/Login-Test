@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anugrah.logintest.R
 import com.anugrah.logintest.viewmodel.ListViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: ListViewModel
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         ipList.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = countriesAdapter
+            adapter = networksAdapter
         }
 
         observeViewModel()
